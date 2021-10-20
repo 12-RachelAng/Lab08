@@ -22,6 +22,15 @@ public class Player : MonoBehaviour
         transform.position = transform.position + new Vector3(0 , verticalInput * speed * Time.deltaTime, 0);
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            print("Touch");
+            SceneManager.LoadScene("GameOver");
+        }
+    }
+
     //Retry Button
     public void RetryButton()
     {
