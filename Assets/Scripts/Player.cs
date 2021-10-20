@@ -25,6 +25,11 @@ public class Player : MonoBehaviour
         transform.position = transform.position + new Vector3(0 , verticalInput * speed * Time.deltaTime, 0);
 
         ScoreText.GetComponent<Text>().text = "Score: " + Score;
+
+        if (Score >= 20)
+        {
+            SceneManager.LoadScene("GameWin");
+        }
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -38,6 +43,7 @@ public class Player : MonoBehaviour
     //Retry Button
     public void RetryButton()
     {
+        Score = 0;
         SceneManager.LoadScene("SampleScene");
     }
 }
